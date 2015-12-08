@@ -1,0 +1,35 @@
+homepage:
+    submitForm: "Odeslat"
+    enterEmail: "Zadejte e-mail kterým se přihlašujete"
+    signIn: "Přihlášení"
+    rememberMe: "Zapamatovat si mně"
+    forgotPass: "Zapomenuté heslo"
+
+menu:
+    posts: "Příspěvky"
+    pages: "Stránky"
+    content: "Obsah"
+    settings: "Nastavení"
+    globalsettings: "Global"
+
+messages:
+    nonExistPost: "Požadovaný článek neexistuje"
+    postAdded: "Článek byl úspěšně vložen"
+    postEdited: "Článek byl úšpešně editován"
+    notLogged: "K této akci je nutné být přihlášen nebo nemáte oprávnění"
+    logout: "Byl jste odhlášen"
+
+form:
+    save: "Uložit"
+
+settings:
+    nameofweb: "Jméno webu"
+    typename: "Zadejte jméno webu"
+    premail: "Primární e-mail"
+    typepremail: "Zadejte primární e-mail"
+
+loginPage:
+    username: "Uživatelské jméno"
+    pass: "Heslo"
+    passNot: "Prosím zadejte své heslo"
+    login: "Přihlásit"

@@ -1,0 +1,83 @@
+html, body {
+  height: 100%; }
+
+.container-fluid, .row {
+  height: 100%; }
+
+.menu {
+  height: 100%;
+  min-height: 100%; }
+
+.nav bar-static-top {
+  margin-bottom: 20px; }
+
+i {
+  font-size: 16px; }
+
+.nav > li > a {
+  color: #787878; }
+
+footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #efefef; }
+
+/* count indicator near icons */
+.nav > li .count {
+  position: absolute;
+  bottom: 12px;
+  right: 6px;
+  font-size: 9px;
+  background: rgba(51, 200, 51, 0.55);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1em;
+  padding: 2px 4px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px; }
+
+/** Menu */
+.menu > a {
+  font-weight: bold;
+  font-size: 18px; }
+
+.menu > a > i {
+  padding-right: 10px;
+  font-size: 23px; }
+
+.menu > .nav.nav-stacked > li > a > i {
+  font-size: 15px;
+  padding-right: 3px; }
+
+/** form-full*/
+form.form-full, form.form-group table {
+  width: 100%; }
+
+table {
+  width: 100%; }
+
+form.form-full table tr {
+  padding: 10px;
+  border-bottom: 1px solid #eee; }
+
+form.form-full table tr:nth-last-child(1) {
+  padding: 10px;
+  border-bottom: none; }
+
+form.form-full table tr th, form table tr td {
+  padding: 20px 0px; }
+
+/** Label */
+label {
+  display: block; }
+
+/** Datatable */
+.dataTable td.icon {
+  text-align: center; }
+  .dataTable td.icon.delete a {
+    color: #E74C3C; }
+
+/*# sourceMappingURL=admin.css.map */

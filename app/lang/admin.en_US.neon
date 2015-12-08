@@ -1,0 +1,36 @@
+homepage:
+    submitForm: "Submit"
+    enterEmail: "Enter the email you signed up with"
+    signIn: "Sign In"
+    rememberMe: "Remember Me"
+    forgotPass: "Forgotten password"
+
+menu:
+    posts: "Posts"
+    pages: "Pages"
+    content: "Content"
+    settings: "Settings"
+    globalsettings: "Global"
+
+messages:
+    nonExistPost: "Requested post does not exists."
+    postAdded: "Post successfully added"
+    postEdited: "Post successfully edited"
+    notLogged: "You must be logged to perform this operation or your permission isn't high enough"
+    logout: "You've been logged out"
+
+
+form:
+    save: "Save"
+
+settings:
+    nameofweb: "Web name"
+    typename: "Type name of web"
+    premail: "Primary e-mail"
+    typepremail: "Type your primary e-mail"
+
+loginPage:
+    username: "Username"
+    pass: "Password"
+    passNot: "Please enter your password"
+    login: "Log in"

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Admin</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="{$basePath}/css/bootstrap.min.css" rel="stylesheet">
+		<link href="{$basePath}/css/admin/admin.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	</head>
+	<body>
+<!-- header -->
+
+	{if $user->loggedIn}
+		<div class="container-fluid">
+            <div class="row">
+		{include header.latte}
+
+		{include menu.latte}
+
+	<div class="col-md-9">
+		<div class="breadcumbers col-md-6">
+			<ol class="breadcrumb ">
+
+			  <li n:foreach="$breadcrumbs as $breadcrumb" n:class="$iterator->last ? active">
+			  	<a n:tag-if="!$iterator->last" n:href="$breadcrumb['link']">{$breadcrumb['name']}</a>
+			  </li>
+
+			</ol>
+		</div>
+	{/if}
+
+	{if $flashes}
+		<div class="col-sm-9">
+			<div n:foreach="$flashes as $flash"  class="alert alert-{$flash->type} alert-dismissible" role="alert">
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					{$flash->message}
+			</div>
+		</div>
+	{/if}
+
+
+
+        {include content}
+
+        {if $user->loggedIn}
+            </div>
+        </div>
+        {/if}
+	</div>
+<!-- /.modal -->
+	<!-- script references -->
+
+		<script src="{$basePath}/js/bootstrap.min.js"></script>
+		<script src="{$basePath}/js/admin/admin.js"></script>
+
+
+	</body>
+</html>

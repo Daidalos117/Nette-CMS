@@ -1,0 +1,193 @@
+{block content}
+<link href="{$basePath}/css/admin/summernote.css" rel="stylesheet">
+<script src="{$basePath}/js/admin/summernote.min.js"></script>
+<div class="col-md-9">
+{control newForm}
+</div>
+
+<div class="col-md-12">
+
+<div  class="alert alert-success alert-dismissible hidden" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        Soubor <b> <span class="file-name-flash"> </b> byl úspěšně nahrán
+</div>
+
+      <button class="btn btn-primary start fileinput-button">
+          <i class="glyphicon glyphicon-upload"></i>
+          <span>Vybrat foto</span>
+      </button>
+</div>
+
+<input type="hidden" name="id" value="{$id}">
+
+
+{foreach $pictures as $picture}
+
+  <div  class="file-row col-md-12 file-{$picture['id']}">
+
+    <div>
+        <span class="preview"><img src="{$basePath . $picture['picture']}" /></span>
+    </div>
+    <div>
+        <p class="name" >{$picture['file']} </p>
+    </div>
+
+    <div>
+      <button data-dz-remove class="btn btn-danger delete" name="{$picture['file']}" pic-id="{$picture['id']}">
+        <i class="glyphicon glyphicon-trash"></i>
+        <span>Delete</span>
+      </button>
+    </div>
+  </div>
+
+
+{/foreach}
+
+
+<!-- HTML heavily inspired by http://blueimp.github.io/jQuery-File-Upload/ -->
+<div class="table table-striped col-md-12" class="files" id="previews">
+
+
+
+  <div id="template" class="file-row">
+    <!-- This is used as the file preview template -->
+    <div>
+        <span class="preview"><img data-dz-thumbnail /></span>
+    </div>
+    <div>
+        <p class="name" data-dz-name></p>
+        <strong class="error text-danger" data-dz-errormessage></strong>
+    </div>
+    <div>
+        <p class="size" data-dz-size></p>
+        <div class="progress progress-striped active" id="total-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+        </div>
+    </div>
+    <div>
+      <button class="btn btn-primary start" id="actions">
+          <i class="glyphicon glyphicon-upload"></i>
+          <span>Start</span>
+      </button>
+
+      <button data-dz-remove class="btn btn-danger delete">
+        <i class="glyphicon glyphicon-trash"></i>
+        <span>Delete</span>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+
+    <script src="{$basePath}/js/admin/dropzone.js"></script>
+
+<script>
+
+
+$(document).ready(function() {
+  $('#summernote').summernote({
+     height: 400,                 // set editor height
+
+
+  });
+
+    $('.delete').click(function(){
+        var name = $(this).attr( "name");
+        var postId = $(this).attr( "pic-id");
+                $.ajax({
+                    type: 'POST',
+                    url: {plink Image:delete},
+                    data: "name="+name+"&id=" + {$id},
+                    dataType: 'html',
+                });
+        $(".file-"+postId).hide(500);
+    });
+
+
+// Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+var previewNode = document.querySelector("#template");
+previewNode.id = "";
+var previewTemplate = previewNode.parentNode.innerHTML;
+previewNode.parentNode.removeChild(previewNode);
+
+var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+  url: {plink Image:upload $id}, // Set the url
+  thumbnailWidth: 80,
+  thumbnailHeight: 80,
+  parallelUploads: 20,
+  previewTemplate: previewTemplate,
+  autoQueue: false, // Make sure the files aren't queued until manually added
+  previewsContainer: "#previews", // Define the container to display the previews
+
+  clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
+
+
+    removedfile: function(file) {
+        var name = file.name;
+        $.ajax({
+            type: 'POST',
+            url: {plink Image:delete},
+            data: "name="+name+"&id=" + {$id},
+            dataType: 'html',
+
+        });
+    var _ref;
+    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+      },
+     success: function(file){
+         var name = file.name;
+          $(".file-name-flash").html(name);
+          $(".alert.alert-success").show(500);
+          setTimeout(function(){
+              $(".alert.alert-success").hide(500);
+          },3000 );
+     }
+
+
+});
+
+
+
+
+myDropzone.on("addedfile", function(file) {
+  // Hookup the start button
+  file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+});
+
+// Update the total progress bar
+myDropzone.on("totaluploadprogress", function(progress) {
+  document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
+});
+
+myDropzone.on("sending", function(file) {
+  // Show the total progress bar when upload starts
+  $("#total-progress").css("opacity", "1");
+  // And disable the start button
+  file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+});
+
+// Hide the total progress bar when nothing's uploading anymore
+myDropzone.on("queuecomplete", function(progress) {
+
+});
+
+// Setup the buttons for all transfers
+// The "add files" button doesn't need to be setup because the config
+// `clickable` has already been specified.
+document.querySelector(".start").onclick = function(){
+myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+};
+$(".cancel").onclick = function(){
+myDropzone.removeAllFiles(true);
+};
+
+
+
+
+
+
+  });
+
+</script>

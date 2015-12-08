@@ -1,0 +1,63 @@
+{block content}
+
+ <div class="col-sm-6">
+
+<link rel="stylesheet" type="text/css" href="{$basePath}/css/admin/dataTables.bootstrap.min.css">
+
+<table class="medium-12 table table-striped table-bordered dataTable" id="data-table">
+  <thead>
+    <tr>
+      <th> ID</th>
+      <th> Název</th>
+      <th> Datum</th>
+      <th> </th>
+    </tr>
+  </thead>
+ <tbody class="list">
+
+{foreach $pages as $stranka}
+    <tr>
+        <td>{$stranka->id}</td>
+        <td>{$stranka->title}</td>
+        <td>{$stranka->date|date:'d-m-Y'}</td>
+        <td><a n:href="Post:delete $clanek->id"><i class="fa fa-trash"></i></a></td>
+    </tr>
+{/foreach}
+
+</tbody>
+</table>
+
+
+
+<script type="text/javascript" charset="utf8" src="{$basePath}/js/admin/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="{$basePath}/js/admin/dataTables.bootstrap.min.js"></script>
+<script>
+$(document).ready( function () {
+    $('#data-table').DataTable( {
+       "pageLength": 50,
+       stateSave: true,
+       "columnDefs": [
+         { "orderable": false, "targets": 3 }                   //vypnuti razeni editace a mazani
+
+                   ],
+
+                               } );
+} );
+
+</script>
+</div>
+
+<div class="col-sm-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Pøidat pøíspìvek</h4>
+        </div>
+        <div class="panel-body">
+            {control newShortForm}
+        </div>
+    </div>
+
+
+
+
+</div>

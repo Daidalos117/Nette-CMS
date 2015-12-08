@@ -1,0 +1,67 @@
+{block content}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pr-wrap">
+                <div class="pass-reset">
+                    <label>
+                        {_admin.homepage.enterEmail}
+                     </label>
+                    <input type="email" placeholder="Email" />
+
+
+                    <input type="submit" value=" {_admin.homepage.submitForm}" class="pass-reset-submit btn btn-success btn-sm" />
+                </div>
+            </div>
+            <div class="wrap">
+                <p class="form-title">
+                    {_admin.homepage.signIn}</p>
+
+
+                {form signInForm}
+
+                {input email}
+
+                {input password}
+
+
+                {input send}
+                     {/form}
+                <div class="remember-forgot">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" />
+                                    {_admin.homepage.rememberMe}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 forgot-pass-content">
+                            <a href="javascription:void(0)" class="forgot-pass">{_admin.homepage.forgotPass}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<link href="{$basePath}/css/admin/admin-login.css" rel="stylesheet">
+<script>
+ $(document).ready(function () {
+    $('.forgot-pass').click(function(event) {
+      $(".pr-wrap").toggleClass("show-pass-reset");
+    });
+
+    $('.pass-reset-submit').click(function(event) {
+      $(".pr-wrap").removeClass("show-pass-reset");
+    });
+});
+</script>
+

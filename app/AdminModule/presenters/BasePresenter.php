@@ -13,7 +13,7 @@ use Nette\Application\UI\Form,
  * Class BasePresenter
  * @package App\AdminModule\Presenters
  */
-class BasEPresenter extends \App\Presenters\BasePresenter {
+class BasePresenter extends \App\Presenters\BasePresenter {
 
 
     /**

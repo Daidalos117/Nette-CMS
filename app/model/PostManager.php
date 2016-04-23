@@ -90,6 +90,7 @@ class PostManager extends BaseModel{
 
     public function editPost($post, $returnId = FALSE){
 
+        $post["active"] = 0;
         $postId = $post["id"];
         unset(  $post["id"]);
         $update = $this->database->table(self::TABLE_NAME)->where(self::COLUMN_ID, $postId)->update($post);
